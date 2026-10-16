@@ -1,0 +1,11 @@
+services:
+  localstack:
+    image: localstack/localstack:3.8
+    container_name: localstack_container
+    ports:
+      - "4566:4566" # Porta padrão única para todos os serviços da AWS no LocalStack
+    environment:
+      - SERVICES=sqs
+      - AWS_DEFAULT_REGION=us-east-1
+    volumes:
+      - "./localstack-init:/etc/localstack/init/ready.d" # Pasta opcional para scripts de inicialização automática
